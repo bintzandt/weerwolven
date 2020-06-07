@@ -5,11 +5,13 @@ services:
       container_name: weerwolven-mysql
       command: --default-authentication-plugin=mysql_native_password
       volumes:
-        - ./database_data:/var/lib/mysql
+        - dbvolume:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=admin
         - MYSQL_DATABASE=weerwolven
         - MYSQL_USER=admin
         - MYSQL_PASSWORD=admin
       ports:
-        - "127.0.0.1:1234:3306"
+        - "1234:3306"
+volumes:
+  dbvolume: 

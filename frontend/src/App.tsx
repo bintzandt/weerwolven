@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 interface AppProps {}
 
 function App({}: AppProps) {
-  const [ result, updateResult ] = useState("");
+  const [ result, updateResult ] = React.useState("");
   
-  useEffect( () => {
+  React.useEffect( () => {
     async function fetchMyApi() {
       const response = await fetch('http://localhost:3000');
       const result = await response.text();

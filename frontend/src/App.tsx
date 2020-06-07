@@ -10,7 +10,7 @@ function App({}: AppProps) {
   React.useEffect( () => {
     async function fetchMyApi() {
       const response = await fetch('http://localhost:3000');
-      const result = await response.text();
+      const result = await response.json();
       updateResult( result );
     }
     fetchMyApi()

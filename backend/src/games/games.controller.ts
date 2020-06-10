@@ -1,9 +1,16 @@
 import { Controller, Get, Post, Put, Param } from '@nestjs/common';
+import { Role } from "../players/player.entity"
 
 @Controller({
 	path: 'game',
 })
 export class GamesController {
+
+  @Get('roles')
+  getRoles() : object {
+    return Object.keys(Role)
+  }
+
   @Post()
   createGame(): string {
     return "create game";

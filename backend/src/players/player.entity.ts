@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, ManyToMany } from "typeorm";
-import { User } from "src/users/user.entity";
-import { Game } from "src/games/game.entity";
+import { User } from "../users/user.entity";
+import { Game } from "../games/game.entity";
 
 enum GameStatus {
 	Alive,
@@ -17,9 +17,9 @@ enum Group {
     Village,
 }
 
-enum Role {
-	Burger,
-	Wolf,
+export enum Role {
+	Burger = "Burger",
+	Weerwolf = "Weerwolf",
 }
 
 @Entity({

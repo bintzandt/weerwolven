@@ -7,8 +7,10 @@
     "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@snowpack/app-scripts-react": "^1.1.4",

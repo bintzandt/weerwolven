@@ -25,7 +25,7 @@ describe('AppController', () => {
 
   describe('Get Roles', () => {
     it('should give the roles', () => {
-      expect(gamesController.getRoles()).toBe(['Burger', 'Weerwolf'])
+      expect(gamesController.getRoles()).toStrictEqual(['Burger', 'Weerwolf'])
     })
   })
 });

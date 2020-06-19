@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fetchAPI } from './Api';
+import { fetchAPI, postAPI } from './Api';
 import DatePicker from 'react-datepicker'
 
 interface IState {
@@ -19,12 +19,14 @@ export class CreateGame extends React.Component<IProps, IState> {
     async fetchRoles() {
         const roles = new Map<string, boolean>()
         await fetchAPI('/game/roles')
-                .then(ls => ls.forEach((el: string) => {
-                roles.set(el, false)
-                }))
-        this.setState({
-        roles: roles
-        })
+            .then(ls => ls.forEach((el: string) => { roles.set(el, false)}))
+        this.setState({ roles: roles })
+    }
+
+    async pushGame() {
+        const state = this.state
+        await postAPI('/game/create', state)
+            .then(data => { console.log(data)})
     }
 
     componentDidMount() {
@@ -32,8 +34,8 @@ export class CreateGame extends React.Component<IProps, IState> {
     }
 
     submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-        e.preventDefault();
-        console.log(this.state)
+        e.preventDefault()
+        this.pushGame()
     }
 
     onChangeListen(type: string, value: any) {

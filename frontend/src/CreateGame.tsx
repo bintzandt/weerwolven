@@ -24,9 +24,12 @@ export class CreateGame extends React.Component<IProps, IState> {
     }
 
     async pushGame() {
-        const state = this.state
-        await postAPI('/game/create', state)
-            .then(data => { console.log(data)})
+        const date = this.state.date
+        const roles = this.state.roles
+        await postAPI('/game', {
+                date: date, 
+                roles: [...roles.keys()].filter(el => true ==  roles.get(el))
+              }).then(data => { console.log(data)})
     }
 
     componentDidMount() {

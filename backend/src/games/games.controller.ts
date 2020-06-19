@@ -1,10 +1,17 @@
-import { Controller, Get, Post, Put, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Param, Body } from '@nestjs/common';
 import { Role } from "../players/player.entity"
+import { GamesService } from './games.service';
+import { Game } from './game.entity';
 
+class GameDTO {
+  date: Date
+  roles: Role[]
+}
 @Controller({
 	path: 'game',
 })
 export class GamesController {
+  constructor(private readonly gamesService: GamesService) {}
 
   @Get('roles')
   getRoles() : object {
@@ -12,8 +19,11 @@ export class GamesController {
   }
 
   @Post()
-  createGame(): string {
-    return "create game";
+  createGame(@Body() message: GameDTO): object {
+    const game: Game = new Game()
+    game.startDate = new Date(message.date)
+    const returned = this.gamesService.save(game)
+    return returned;
   }
 
   @Put(':id')

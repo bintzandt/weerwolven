@@ -9,6 +9,8 @@
   "dependencies": {
     "@types/react-datepicker": "^3.0.0",
     "@types/react-router-dom": "^5.1.5",
+    "bootstrap": "^4.5.0",
+    "date-fns": "^2.14.0",
     "react": "^16.13.0",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.13.0",

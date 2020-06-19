@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 import FrontendRouter from './Router'
 import './index.css';
+import "react-datepicker/dist/react-datepicker.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

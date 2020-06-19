@@ -44,7 +44,7 @@ class CreateGame extends React.Component<IProps, IState> {
     console.log(this.state)
   }
 
-  onChangeListen(type: string, value: string) {
+  onChangeListen(type: string, value: any) {
     const roles = this.state.roles
     var date = this.state.date
 
@@ -64,7 +64,7 @@ class CreateGame extends React.Component<IProps, IState> {
     return (
       <form>
           <h1>Create game</h1>
-          <DatePicker startDate={this.state.date} onChange={date => console.log(date)}/>
+          <DatePicker selected={this.state.date} onChange={date => this.onChangeListen("date", date)}  placeholderText="MM/DD/YYYY"/>
           <ul>
               { [...this.state.roles.keys()].map((value) => (
                   <Checkbox key={value} label={value} isSelected={this.state.roles.get(value)} onChangeListener={this.onChangeListen.bind(this)} />

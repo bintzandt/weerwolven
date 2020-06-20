@@ -15,15 +15,14 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', done => {
+  it('not existing game returns 400 (GET)', done => {
     return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!')
+      .get('/game/notexists')
+      .expect(400)
       .end(done);
   });
 
-  beforeAll(async () => {
+  afterAll(async () => {
     await app.close();
   });
 });

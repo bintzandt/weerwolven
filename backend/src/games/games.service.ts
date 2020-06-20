@@ -1,5 +1,5 @@
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Game } from './game.entity';
@@ -12,14 +12,22 @@ export class GamesService {
   ) {}
 
   async save(game: Game): Promise<Game> {
-    return this.gamesRepository.save(game)
+    return await this.gamesRepository.save(game)
   }
 
-  findAll(): Promise<Game[]> {
+  async findAll(): Promise<Game[]> {
     return this.gamesRepository.find();
   }
 
-  findOne(id: string): Promise<Game> {
+  async findByPublicId(id: string): Promise<Game> {
+    const game = await this.gamesRepository.findOne({ where: { publicid: id } })
+    if(undefined == game) {
+      throw new BadRequestException('Invalid game')
+    }
+    return game
+  }
+
+  async findOne(id: any): Promise<Game> {
     return this.gamesRepository.findOne(id);
   }
 

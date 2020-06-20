@@ -46,13 +46,13 @@ export class CreateGame extends React.Component<IProps, IState> {
         var date = this.state.date
 
         switch (type) {
-        case "role":
-            roles.set(value, this.state.roles.get(value) ? false : true)
-            break;
-        case "date":
-            date = value
-        default:
-            break;
+            case "role":
+                roles.set(value, this.state.roles.get(value) ? false : true)
+                break;
+            case "date":
+                date = value
+            default:
+                break;
         }
         this.setState({roles: roles, date: date})
     }
